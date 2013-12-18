@@ -61,26 +61,26 @@ namespace CSVResult.Controllers {
             response.ContentEncoding = this.ContentEncoding;
 
             //見出し行を出力。
-            OutputHeader(response);
+            outputHeader(response);
 
             //各行のデータを出力。
             foreach (object item in this.Data) {
-                OutputLine(response, item);
+                outputLine(response, item);
             }
         }
 
 
-        private void OutputHeader(HttpResponseBase response) {
+        private void outputHeader(HttpResponseBase response) {
             if (this.Data.Count() == 0) return;
 
             var target = this.Data.ElementAt(0);
-            string str = buildCSVHeaderStringFromObject(target);
+            string str = BuildCSVHeaderStringFromObject(target);
             str += Environment.NewLine;
             response.BinaryWrite(this.ContentEncoding.GetBytes(str));
         }
 
-        private void OutputLine(HttpResponseBase response, object item) {
-            string str = buildCSVStringFromObject(item);
+        private void outputLine(HttpResponseBase response, object item) {
+            string str = BuildCSVStringFromObject(item);
             str += Environment.NewLine;
             response.BinaryWrite(this.ContentEncoding.GetBytes(str));
         }
@@ -91,7 +91,7 @@ namespace CSVResult.Controllers {
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public string buildCSVHeaderStringFromObject(object obj) {
+        public string BuildCSVHeaderStringFromObject(object obj) {
             var sOut = new StringBuilder();
 
             PropertyInfo[] props = obj.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
@@ -127,7 +127,7 @@ namespace CSVResult.Controllers {
         /// <param name="obj"></param>
         /// <param name="columns"></param>
         /// <returns></returns>
-        public string buildCSVStringFromObject(object obj) {
+        public string BuildCSVStringFromObject(object obj) {
             var sOut = new StringBuilder();
 
             PropertyInfo[] props = obj.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
