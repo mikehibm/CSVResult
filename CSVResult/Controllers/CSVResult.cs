@@ -20,11 +20,11 @@ namespace CSVResult.Controllers {
         public string[] Titles { get; set; }
 
         /// <summary>
-        /// オブジェクトのリストをCSV形式で出力する。
+        /// 任意のオブジェクトの一覧をCSV形式で出力する。
         /// </summary>
         /// <param name="list">任意の型のオブジェクトのリスト</param>
-        /// <param name="columns">出力対象のフィールド/プロパティ名称の配列 (nullの場合は全フィールド/プロパティが対象)</param>
-        /// <param name="titles">出力対象のフィールド/プロパティに対応する見出しの配列 (nullの場合はフィールド名/プロパティ名をそのまま出力する。)</param>
+        /// <param name="columns">出力対象のプロパティ名の配列 (nullの場合は全パブリックプロパティが対象)</param>
+        /// <param name="titles">出力対象のプロパティに対応する見出し文字列の配列 (nullの場合はプロパティ名をそのまま出力)</param>
         /// <param name="filename">出力ファイル名</param>
         public CSVResult(IEnumerable<object> data, string[] columns, string[] titles, string filename = null) {
             this.Data = data;
