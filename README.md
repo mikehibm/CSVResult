@@ -22,7 +22,7 @@ The escapeString() method defines how to convert data when it include comma, new
  
  
 
-CSVResult
+概要
 =========
 
 ASP.NET MVC 4でCSV出力を行うサンプルです。 
@@ -36,7 +36,7 @@ CSVResultクラスを使うことによって任意のクラスのリスト（IE
 また先頭の見出し行に出力するヘッダーの内容もパラメータで指定する事が可能です。
 
 
-How to use
+使い方
 ==========
 CSVResult\Controllers\CSVResult.cs をプロジェクト内にコピーして下さい。
 
