@@ -1,0 +1,38 @@
+﻿dl
+{
+    width: 100%;
+    margin: 2px;
+    padding: 0;
+    border-bottom: dotted 1px #ccc;
+}
+
+.header
+{
+    border: solid 1px pink;
+    font-weight: bold;
+}
+
+dt, dd
+{
+    margin: 0;
+    padding: 2px;
+    display:inline-block;
+    overflow:hidden;
+    width: 120px;
+}
+
+    dt.custid
+    {
+        width: 60px;
+    }
+
+dd.email
+{
+    width: 200px;
+}
+
+.numeric
+{
+    text-align: right;
+}
+

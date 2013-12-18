@@ -1,0 +1,59 @@
+﻿@using CSVResult.Models
+@model IEnumerable<Customer>
+@{
+    ViewBag.Title = "Sample data";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Contents/main.css" type="text/css" />
+</head>
+
+<body>
+    <h2>@ViewBag.Title</h2>
+
+    <dl class="header">
+        <dt class="custid">CustId</dt>
+        <dd class="email">Eメール</dd>
+        <dd>姓</dd>
+        <dd>名</dd>
+        <dd>オーダー日</dd>
+        <dd>オーダー金額</dd>
+    </dl>
+
+    @foreach (var c in Model) {
+        <dl>
+            <dt class="custid">@c.CustId</dt>
+            <dd class="email">@c.Email</dd>
+            <dd>@c.Lastname</dd>
+            <dd>@c.Firstname</dd>
+            <dd>
+                @if (c.OrderDate.HasValue) { 
+                    <text>@c.OrderDate.Value.ToString("yyyy/MM/dd")</text>
+                }
+            </dd>
+            <dd class="numeric">@c.OrderAmount.ToString("#,0.00")</dd>
+        </dl>
+    }
+
+    <button id="outputCSV" type="button">Get CSV</button>
+
+    <script>
+        var btn = document.getElementById("outputCSV");
+        if (btn.addEventListener) {
+            btn.addEventListener('click', outputCSV, false);
+        } else if (el.attachEvent) {
+            btn.attachEvent('onclick', outputCSV);
+        }
+
+        function outputCSV() {
+            window.location.href = "@Url.Action("Csv")";
+        }
+    </script>
+</body>
+</html>
+
+
+
